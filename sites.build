@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ****************************
+
+  PROJECT: Site configurations for FT.Multisite
+
+**************************** -->
+<project name="configmerge.build" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+  <configmerge configfile="${project.web.config}">
+    <element action="Merge" xpath="/configuration/sitecore/sites/site[@name='shell']">
+      <site name="shell"
+            language="da"
+            virtualFolder="/sitecore/shell"
+            physicalFolder="/sitecore/shell"
+            rootPath="/sitecore/content"
+            startItem="/home"
+            database="core"
+            domain="sitecore"
+            content="master"
+            contentStartItem="/Home"
+            enableWorkflow="true" enableAnalytics="false" analyticsDefinitions="content"
+            xmlControlPage="/sitecore/shell/default.aspx" browserTitle="Sitecore" htmlCacheSize="2MB"
+            registryCacheSize="3MB" viewStateCacheSize="4MB" xslCacheSize="5MB" />
+    </element>
+
+
+    <element action="Create" xpath="/configuration/sitecore/sites/site[@name='website']" overwrite="true">
+      <site name="website"
+            scheme="http"
+            language="da"
+            rootPath="/sitecore/content/"
+            startItem="/home"
+            virtualFolder="/" physicalFolder="/" database="web" domain="extranet" allowDebug="true"
+            cacheHtml="true" htmlCacheSize="100MB" registryCacheSize="0" viewStateCacheSize="0" xslCacheSize="5MB" filteredItemsCacheSize="2MB"
+            enablePreview="true" enableWebEdit="true" enableDebugger="true" disableClientData="false" generateSitemap="true"/>
+    </element>
+
+
+    <element action="InsertBefore" xpath="/configuration/sitecore/events/event[@name='publish:end']/handler[@type='Sitecore.Publishing.HtmlCacheClearer, Sitecore.Kernel']/sites/site" >
+      <site>website</site>
+    </element>
+
+    <element action="InsertBefore" xpath="/configuration/sitecore/events/event[@name='publish:end:remote']/handler[@type='Sitecore.Publishing.HtmlCacheClearer, Sitecore.Kernel']/sites/site" >
+      <site>website</site>
+    </element>
+
+  </configmerge>
+
+  <configmerge configfile="${project.web.config}" configurations="debug">
+
+    <!-- ================================================================================================= -->
+    <!-- Debug server                                                                                        -->
+    <!-- ================================================================================================= -->
+
+    <element action="Create" xpath="/configuration/sitecore/sites/site[@name='website']" keyAttribute="name" overwrite="true">
+      <site name="website" hostName="SitecoreMvc.local" targetHostName="SitecoreMvc.local" scheme="http" language="da" rootPath="/sitecore/content/" startItem="/home" virtualFolder="/" physicalFolder="/" database="web" domain="extranet" allowDebug="true" cacheHtml="true" htmlCacheSize="100MB" registryCacheSize="0" viewStateCacheSize="0" xslCacheSize="5MB" filteredItemsCacheSize="2MB" enablePreview="true" enableWebEdit="true" enableDebugger="true" disableClientData="false" generateSitemap="true" />
+    </element>
+  </configmerge>
+
+  <configmerge configfile="${project.web.config}" configurations="dev">
+    <!-- ================================================================================================= -->
+    <!-- Dev server                                                                                        -->
+    <!-- ================================================================================================= -->
+    <element action="Create" xpath="/configuration/sitecore/sites/site[@name='website']" keyAttribute="name" overwrite="true">
+      <site name="website" hostName="SitecoreMvc.dev" targetHostName="SitecoreMvc.dev" scheme="http" language="da" rootPath="/sitecore/content/" startItem="/home" virtualFolder="/" physicalFolder="/" database="web" domain="extranet" allowDebug="true" cacheHtml="true" htmlCacheSize="100MB" registryCacheSize="0" viewStateCacheSize="0" xslCacheSize="5MB" filteredItemsCacheSize="2MB" enablePreview="true" enableWebEdit="true" enableDebugger="true" disableClientData="false" generateSitemap="true" />
+    </element>
+  </configmerge>
+  
+</project>

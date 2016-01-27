@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!-- ****************************
+
+  PROJECT: SitecoreMvc
+
+**************************** -->
+<project name="project.build" xmlns="http://nant.sf.net/release/0.85/nant.xsd" default="normal">
+  <!--  ********************
+   Build environment properties
+   ***************** -->
+  <property name="build.version" value="4.0" />
+  <property name="build.root" value="\\buildlibrary\Library\Build\${build.version}" />
+  <property name="build.isteamcity" value="false" overwrite= "true" />
+  <include buildfile="${build.root}/build.properties" />
+  <include buildfile="${build.root}/pentia.properties" />
+
+  <!--  ********************
+   Project properties
+   ***************** -->
+  <!-- Specifies the project prefix - used throughout to determine e.g. VS solutions etc -->
+  <property name="project.prefix" value="SitecoreMvc"/>
+  <property name="build.buildserver" value="true"/>
+  <property name="build.useroslyn" value="true" overwrite="true" />
+  <property name="build.msbuildpath" value="c:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe" overwrite="true" />
+  <property name="nant.settings.currentframework" value="net-4.0"/>
+
+  <property name="pentia.config.language" overwrite="true" value="da"/>
+  <property name="pentia.config.culture" overwrite="true" value="da-DK"/>
+
+  <!-- Specifies whether to hide all content for search engines -->
+  <property name="robots.hideall" value="${project.configuration == 'test' or project.configuration == 'preproduction'}" dynamic="true"/>
+
+  <dirset id="project.modules" basedir="${library.root}">
+    <include name="Sitecore/8.1.0.151207"/>
+    <include name="Sitecore License/2.0"/>
+    <include name="Pentia/Dictionary/3.0" />
+    <include name="Pentia/SitecoreExtensions/4.0" />
+    <include name="Pentia/Config/4.0"/>
+    <include name="Pentia/DynamicPlaceholderKeys/3.0" />
+  </dirset>
+  <property name="project.platform.local" value="x64"/>
+  <property name="project.database.login.local" value="james"/>
+  <property name="project.database.password.local" value="Passw0rd"/>
+  <property name="project.database.server.local" value="(local)"/>
+  <property name="project.database.prefix.local" value="SitecoreMvc"/>
+
+  <property name="project.platform.debug" value="x64"/>
+  <property name="project.database.login.debug" value="james"/>
+  <property name="project.database.password.debug" value="Passw0rd"/>
+  <property name="project.database.server.debug" value="Korriban\SQL2012"/>
+  <property name="project.database.prefix.debug" value="SitecoreMvc"/>
+  
+  <property name="deploy.task.to.dev" value="\\subterrel\Projects\FIN\Multisite"/>
+  <property name="project.platform.dev" value="x64"/>
+  <property name="project.database.login.dev" value="james"/>
+  <property name="project.database.password.dev" value="Passw0rd"/>
+  <property name="project.database.server.dev" value="Korriban\SQL2012"/>
+  <property name="project.database.prefix.dev" value="SitecoreMvc"/>
+  
+  <property name="sitecore.database.copyto" value="\\korriban\SQL2012Data"/>
+  <property name="sitecore.logfile.copyto" value="\\korriban\SQL2012Logs"/>
+  <property name="sitecore.database.locallocation" value="d:\SQL2012Data"/>
+  <property name="sitecore.logfile.locallocation" value="d:\SQL2012Logs"/>
+ 
+  <!--  ********************
+   main buildfile
+   ***************** -->
+  <include buildfile="${build.root}/main.build" />
+
+  <dirset id="project.projecttasks.files">
+    <include name="${project.root}/*.build"/>
+    <include name="${project.web.root}/Components/Framework/**/*.build"/>
+    <include name="${project.web.root}/Components/Domain/**/*.build"/>
+    <include name="${project.web.root}/Components/Project/**/*.build"/>
+    <include name="${project.web.root}/Components/Tests/**/*.build"/>
+    <include name="${project.web.root}/Components/Legacy/**/*.build"/>
+   
+
+	
+  
+  </dirset>
+</project>

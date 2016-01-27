@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ****************************
+
+  PROJECT: configmerge for FIN.Website
+
+**************************** -->
+<project name="configmerge.build" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+
+  <!-- ********** -->
+  <!-- App_Config\ConnectionStrings.config # -->
+  <!-- ********** -->
+  <configmerge configfile="${project.root}\www\App_Config\ConnectionStrings.config" outputfile="${project.root}\www\App_Config\ConnectionStrings.config" verbose="true">
+    <!-- MONGO DB -->
+    <element action="Create" xpath="/connectionStrings/add[@name='analytics']"  overwrite="true" configurations="debug">
+      <add name="analytics" connectionString="mongodb://localhost/SitecoreMvc_analytics" />
+    </element>
+    <element action="Create" xpath="/connectionStrings/add[@name='tracking.live']"  overwrite="true" configurations="debug">
+      <add name="tracking.live" connectionString="mongodb://localhost/SitecoreMvc_tracking_live" />
+    </element>
+    <element action="Create" xpath="/connectionStrings/add[@name='tracking.history']"  overwrite="true" configurations="debug">
+      <add name="tracking.history" connectionString="mongodb://localhost/SitecoreMvc_tracking_history" />
+    </element>
+    <element action="Create" xpath="/connectionStrings/add[@name='tracking.contact']"  overwrite="true" configurations="debug">
+      <add name="tracking.contact" connectionString="mongodb://localhost/SitecoreMvc_tracking_contact" />
+    </element>
+
+    <!-- debug -->
+    <element action="Create" xpath="/connectionStrings/add[@name='core']"  overwrite="true" configurations="debug">
+      <add name="core" connectionString="user id=sa;password=Passw0rd;Data Source=CJH;Database=SitecoreMvc_Core" />
+    </element>
+    <element action="Create" xpath="/connectionStrings/add[@name='master']"  overwrite="true" configurations="debug">
+      <add name="master" connectionString="user id=sa;password=Passw0rd;Data Source=CJH;Database=SitecoreMvc_Master" />
+    </element>
+    <element action="Create" xpath="/connectionStrings/add[@name='web']"  overwrite="true" configurations="debug">
+      <add name="web" connectionString="user id=sa;password=Passw0rd;Data Source=CJH;Database=SitecoreMvc_web" />
+    </element>
+    <element action="Create" xpath="/connectionStrings/add[@name='reporting']"  overwrite="true" configurations="debug">
+      <add name="reporting" connectionString="user id=sa;password=Passw0rd;Data Source=CJH;Database=SitecoreMvc_analytics" />
+    </element>
+  </configmerge>
+</project>

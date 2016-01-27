@@ -1,0 +1,13 @@
+﻿@model Sitecore.Mvc.Presentation.RenderingModel
+@using PT.Framework.SitecoreExtensions
+@using Sessions
+@using Sitecore.Data
+@using Sitecore.Mvc
+
+<h1>Session</h1>
+
+<h2>@Html.Sitecore().Field(Constants.Fields.Session.Subject)</h2>
+
+<h4>@Model.PageItem.GetString(new ID(Constants.Fields.Session.Description))</h4>
+<p>@Html.Sitecore().Field(Constants.Fields.Session.Text)</p>
+
