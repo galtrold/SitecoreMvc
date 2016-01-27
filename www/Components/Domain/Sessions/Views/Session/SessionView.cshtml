@@ -1,4 +1,4 @@
-﻿@model Sitecore.Mvc.Presentation.RenderingModel
+﻿@model Sessions.Models.SessionModel
 @using PT.Framework.SitecoreExtensions
 @using Sessions
 @using Sitecore.Data
@@ -6,8 +6,13 @@
 
 <h1>Session</h1>
 
-<h2>@Html.Sitecore().Field(Constants.Fields.Session.Subject)</h2>
+<h2>@Model.Subject</h2>
 
-<h4>@Model.PageItem.GetString(new ID(Constants.Fields.Session.Description))</h4>
-<p>@Html.Sitecore().Field(Constants.Fields.Session.Text)</p>
+<h4>@Model.Description</h4>
+<p>@Model.Text</p>
+
+<!-- You need to reference a custom model in Sitecore. Otherwise it will just feed a RenderingModel to the view.
+    Model reference:
+    /sitecore/layout/Models/Components/Domain/Sessions/Session
+-->
 
