@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.PageTypes", "www\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sessions", "www\Components\Domain\Sessions\Sessions.csproj", "{8670DA29-2725-44DC-8202-7D58EC3B5933}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelResolver", "www\Components\Framework\ModelResolver\ModelResolver.csproj", "{EF0DB884-2E78-4DAC-AFB0-F80EC1A5F149}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{8670DA29-2725-44DC-8202-7D58EC3B5933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8670DA29-2725-44DC-8202-7D58EC3B5933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8670DA29-2725-44DC-8202-7D58EC3B5933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF0DB884-2E78-4DAC-AFB0-F80EC1A5F149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF0DB884-2E78-4DAC-AFB0-F80EC1A5F149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF0DB884-2E78-4DAC-AFB0-F80EC1A5F149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF0DB884-2E78-4DAC-AFB0-F80EC1A5F149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +52,6 @@ Global
 		{7680EF61-3FA3-416C-9FA6-2D43AD6E8776} = {344D32D8-DEA6-4C03-9F6E-78C98AE59850}
 		{F476936D-A22B-4307-9EA4-C0BC09E54DFF} = {344D32D8-DEA6-4C03-9F6E-78C98AE59850}
 		{8670DA29-2725-44DC-8202-7D58EC3B5933} = {05610682-6523-49FB-919D-73EE21176589}
+		{EF0DB884-2E78-4DAC-AFB0-F80EC1A5F149} = {6552D485-9F31-45CF-A66E-5B233C05EC95}
 	EndGlobalSection
 EndGlobal

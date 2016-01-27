@@ -38,4 +38,18 @@
       <add name="reporting" connectionString="user id=sa;password=Passw0rd;Data Source=CJH;Database=SitecoreMvc_analytics" />
     </element>
   </configmerge>
+
+  <!-- ********** -->
+  <!-- App_Config\ConnectionStrings.config # -->
+  <!-- ********** -->
+  <configmerge configfile="${project.root}\www\App_Config\include\Sitecore.Xdb.config" outputfile="${project.root}\www\App_Config\include\Sitecore.Xdb.config" verbose="true">
+    <element action="Create" xpath="/configuration/sitecore/settings/setting[@name='Xdb.Enabled']"  overwrite="true">
+      <setting name="Xdb.Enabled" value="false" />
+    </element>
+    <element action="Create" xpath="/configuration/sitecore/settings/setting[@name='Xdb.Tracking.Enabled']"  overwrite="true">
+      <setting name="Xdb.Tracking.Enabled" value="false" />
+    </element>
+  </configmerge>
+  
 </project>
+
