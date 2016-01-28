@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
+using MvcFormUtil.HtmlHelpers;
 using Sessions.ViewModels;
 using Sitecore.Mvc.Controllers;
 using Sitecore.Mvc.Presentation;
 
 namespace Sessions.Controllers
 {
-    public class SessionController : SitecoreController
+    public class SessionController : Controller
     {
         private string _viewPath = "/Components/Domain/Sessions/Views/Session/SessionView.cshtml";
 
@@ -19,21 +20,24 @@ namespace Sessions.Controllers
         }
 
         [HttpPost]
+        [ValidateFormHandler]
         public ActionResult SessionView(SessionViewModel viewModel)
         {
 
-            // Store registration 
-               
+            if (ModelState.IsValid)
+            {
+                // Store registration     
+            }
+
             SessionViewModel vm = viewModel;
             try
             {
-                var attendeeEmain = viewModel.Signup;
                 var dataItem = Sitecore.Context.Database.GetItem(RenderingContext.Current.Rendering.DataSource);
-                vm = new SessionViewModel(dataItem ?? PageContext.Current.Item) { Signup = attendeeEmain };
+                vm = new SessionViewModel(dataItem ?? PageContext.Current.Item);
+                    
             }
             catch (Exception)
             {
-                vm.Signup = "Damnit! Kunne ikke finde min datasource :(";
                 return View(_viewPath, vm);
             }
             return View(_viewPath, vm);

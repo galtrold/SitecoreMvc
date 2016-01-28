@@ -1,8 +1,5 @@
 ﻿@model Sessions.ViewModels.SessionViewModel
-@using PT.Framework.SitecoreExtensions
-@using Sessions
-@using Sitecore.Data
-@using Sitecore.Mvc
+@using MvcFormUtil.HtmlHelpers
 
 <h1>Session</h1>
 
@@ -12,12 +9,17 @@
 
 
 <div>
-    @using (Html.BeginRouteForm(Sitecore.Mvc.Configuration.MvcSettings.SitecoreRouteName, FormMethod.Post))
+
+    @using (Html.BeginForm())
     {
-        @Html.Sitecore().FormHandler("Session", "SessionView")
-        @Html.LabelFor(x => x.Signup)
-        @Html.EditorFor(x => x.Signup)
-        <input type="submit"/>
+        @Html.ControllerHandler("Session", "SessionView")
+        <div>
+            @Html.LabelFor(x => x.Signup)
+            @Html.EditorFor(x => x.Signup)
+        </div>
+        <div>
+            <input type="submit" />
+        </div>
     }
 </div>
 
