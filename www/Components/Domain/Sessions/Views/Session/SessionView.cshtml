@@ -1,4 +1,4 @@
-﻿@model Sessions.Models.SessionModel
+﻿@model Sessions.ViewModels.SessionViewModel
 @using PT.Framework.SitecoreExtensions
 @using Sessions
 @using Sitecore.Data
@@ -9,10 +9,16 @@
 <h2>@Model.Subject</h2>
 
 <h4>@Model.Description</h4>
+
+
+<div>
+    @using (Html.BeginRouteForm(Sitecore.Mvc.Configuration.MvcSettings.SitecoreRouteName, FormMethod.Post))
+    {
+        @Html.Sitecore().FormHandler("Session", "SessionView")
+        @Html.LabelFor(x => x.Signup)
+        @Html.EditorFor(x => x.Signup)
+        <input type="submit"/>
+    }
+</div>
+
 <p>@Model.Text</p>
-
-<!-- You need to reference a custom model in Sitecore. Otherwise it will just feed a RenderingModel to the view.
-    Model reference:
-    /sitecore/layout/Models/Components/Domain/Sessions/Session
--->
-
