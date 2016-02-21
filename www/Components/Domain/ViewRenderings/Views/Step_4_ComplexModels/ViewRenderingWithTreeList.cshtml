@@ -1,0 +1,90 @@
+﻿@using Pentia.ViewRenderings
+@using Pentia.ViewRenderings.ViewModels
+@using Sitecore.Data
+@using Sitecore.Data.Items
+@using Sitecore.Mvc
+@model Pentia.ViewRenderings.ViewModels.BuildingViewModel
+
+<h1 class="headline">RenderingView with complex ViewModel</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">@Model.Field(p => p.Name)</div>
+            <div class="panel-body">
+                @Model.Field(p => p.Description)
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h4 class="text-center headline-box">BASIC INFORMATION</h4>
+        <dl class="dl-horizontal">
+            <dt>Name:</dt>
+            <dd>@Model.Field(p => p.Name)</dd>
+            <dt>Cost:</dt>
+            <dd>@Model.Field(p => p.MineralCost)</dd>
+        </dl>
+    </div>
+</div>
+
+<h3 class="headline">Production units</h3>
+<!-------------------------
+    Using mapped ViewModel with static typing
+--------------------------->
+<div class="row">
+    @foreach (var unit in Model.List<GameUnitViewModel>(p => p.ProductionUnits))
+    {
+        <div class="col-md-3">
+            <dl class="dl-horizontal">
+                <dt>Name:</dt>
+                <dd>@unit.Field(p => p.Name)</dd>
+                <dt>Race:</dt>
+                <dd>@unit.Field(p => p.Race)</dd>
+                <dt>Life:</dt>
+                <dd>@unit.Field(p => p.Life)</dd>
+                <dt>Shield:</dt>
+                <dd>@unit.Field(p => p.Shield)</dd>
+                <dt>Armor:</dt>
+                <dd>@unit.Field(p => p.Armor)</dd>
+                <dt>Cargo Size:</dt>
+                <dd>@unit.Field(p => p.CargoSize)</dd>
+                <dt>Attributes:</dt>
+                <dd>@unit.Field(p => p.Ability)</dd>
+            </dl>
+        </div>
+    }
+</div>
+
+<!-------------------------
+    Using Sitecore item with loose typing, this is lacking error handling.
+--------------------------->
+
+<div class="row">
+    @{
+        Item unitItem = null;
+    }
+    @foreach (var unitItemId in Model.Rendering.Item.Fields[Constants.Fields.Building.ProductionUnits].Value.Split('|'))
+    {
+        unitItem = Sitecore.Context.Database.GetItem(new ID(unitItemId));
+
+        <div class="col-md-3">
+            <dl class="dl-horizontal">
+                <dt>Race:</dt>
+                <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Name, unitItem)</dd>
+                <dt>Race:</dt>
+                <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Race, unitItem)</dd>
+                <dt>Life:</dt>
+                <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Life, unitItem)</dd>
+                <dt>Shield:</dt>
+                <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Shield, unitItem)</dd>
+                <dt>Armor:</dt>
+                <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Armor, unitItem)</dd>
+                <dt>Cargo Size:</dt>
+                <dd>@Html.Sitecore().Field(Constants.Fields.Unit.CargoSize, unitItem)</dd>
+                <dt>Attributes:</dt>
+                <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Attributes, unitItem)</dd>
+            </dl>
+        </div>
+    }
+</div>

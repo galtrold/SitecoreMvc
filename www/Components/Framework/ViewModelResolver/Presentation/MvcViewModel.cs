@@ -78,13 +78,7 @@ namespace ViewModelResolver.Presentation
                 var propId = GetPropertyId(expression);
                 fieldId = propId.ToString();
 
-                Item item = null;
-
-                if (DataItem != null)
-                    item = DataItem;
-
-                if (item == null)
-                    item = Rendering.Item;
+                var item = GetDataItem();
 
 
                 itemId = item.ID.ToString();
@@ -106,6 +100,18 @@ namespace ViewModelResolver.Presentation
             
         }
 
+        private Item GetDataItem()
+        {
+            Item item = null;
+
+            if (DataItem != null)
+                item = DataItem;
+
+            if (item == null)
+                item = Rendering.Item;
+            return item;
+        }
+
         public TP GetItemReference<TP>(Expression<Func<T, object>> expression) where TP : MvcViewModel<TP>, new()
         {
             if (DataItem == null)
@@ -124,12 +130,15 @@ namespace ViewModelResolver.Presentation
 
         public IEnumerable<TK> List<TK>(Expression<Func<T, object>>  expression) where TK : MvcViewModel<TK>, new()
         {
-            if(DataItem == null)
+
+            var item = GetDataItem();
+
+            if (item == null)
                 return new List<TK>();
 
             var propId = GetPropertyId(expression);
 
-            var listField = DataItem.Fields[propId];
+            var listField = item.Fields[propId];
 
             var database = Sitecore.Context.Database;
 

@@ -100,7 +100,9 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Models\GameUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BuildingViewModel.cs" />
     <Compile Include="ViewModels\GameUnitViewModel.cs" />
+    <Compile Include="ViewModels\Map\BuildingViewModel.cs" />
     <Compile Include="ViewModels\Map\GameUnitViewModelMap.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -108,21 +110,24 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ViewRenderingCustomModelMapped.cshtml" />
+    <Content Include="Views\Step_3_MappingTheModel\ViewRenderingCustomModelMapped.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ViewRendering.cshtml" />
+    <Content Include="Views\Step_1_BasicViewRendering\ViewRendering.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ViewRenderingCustomModel.cshtml" />
+    <Content Include="Views\Step_2_CustomModel\ViewRenderingCustomModel.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Views\Step_4_ComplexModels\ViewRenderingWithTreeList.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\ViewModelResolver\ViewModelResolver.csproj">
       <Project>{4E2D47D4-5DEE-40C2-9E3C-9DCF2C2868E1}</Project>
       <Name>ViewModelResolver</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -7,7 +7,7 @@ namespace Pentia.ViewRenderings.ViewModels
 {
     public class GameUnitViewModel : MvcViewModel<GameUnitViewModel>
     {
-
+        public object Name { get; set; }
         public string Description { get; set; }
         public string Race { get; set; }
         public string Attributes { get; set; }
@@ -25,12 +25,10 @@ namespace Pentia.ViewRenderings.ViewModels
         public string Upgrades { get; set; }
         public string Weapon { get; set; }
         public string Ability { get; set; }
+        
 
         public GameUnitViewModel()
         {
-            //Upgrades = this.Item.Fields[GetPropertyId(p => p.Upgrades)].Value;
-            //Weapon = this.Item.Fields[GetPropertyId(p => p.Weapon)].Value;
-            //Ability = this.Item.Fields[GetPropertyId(p => p.Ability)].Value;
         }
 
         public GameUnitViewModel(Item dataItem) : base(dataItem)

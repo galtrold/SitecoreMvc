@@ -7,6 +7,7 @@ namespace Pentia.ViewRenderings.ViewModels.Map
     {
         public GameUnitViewModelMap()
         {
+            SetClassPropertyFieldId(p => p.Name, new ID("{73FB136E-A40B-40FE-AF36-66F333270616}"));
             SetClassPropertyFieldId(p => p.Description, new ID("{DB78166D-0F55-4D73-92F4-A0E5F43B4015}"));
             SetClassPropertyFieldId(p => p.Race, new ID("{6F2B8810-991B-43C8-8CFD-A7F1B91089EE}"));
             SetClassPropertyFieldId(p => p.Life, new ID("{9679D39D-5618-4E6D-A5ED-B48EA2D92096}"));

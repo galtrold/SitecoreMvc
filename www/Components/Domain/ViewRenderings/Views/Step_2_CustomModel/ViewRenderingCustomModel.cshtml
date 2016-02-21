@@ -1,13 +1,15 @@
-﻿@model Pentia.ViewRenderings.ViewModels.GameUnitViewModel
+﻿@model Pentia.ViewRenderings.Models.GameUnit
+@using Pentia.ViewRenderings
+@using Sitecore.Mvc
 
 <h1 class="headline">RenderingView Custom Model</h1>
 
 <div class="row">
     <div class="col-md-5">
         <div class="panel panel-primary">
-            <div class="panel-heading">Immortal</div>
+            <div class="panel-heading">@Html.Sitecore().Field(Constants.Fields.Unit.Name)</div>
             <div class="panel-body">
-                @Model.Field(p => p.Description)
+                @Html.Sitecore().Field(Constants.Fields.Unit.Description)
             </div>
         </div>
     </div>
@@ -17,44 +19,44 @@
         <h4 class="text-center headline-box">BASIC INFORMATION</h4>
         <dl class="dl-horizontal">
             <dt>Race:</dt>
-            <dd>@Model.Field(p => p.Race)</dd>
+            <dd>@Model.Race</dd>
             <dt>Life:</dt>
-            <dd>@Model.Field(p => p.Life)</dd>
+            <dd>@Model.Life</dd>
             <dt>Shield:</dt>
-            <dd>@Model.Field(p => p.Shield)</dd>
+            <dd>@Model.Shield</dd>
             <dt>Armor:</dt>
-            <dd>@Model.Field(p => p.Armor)</dd>
+            <dd>@Model.Armor</dd>
             <dt>Cargo Size:</dt>
-            <dd>@Model.Field(p => p.CargoSize)</dd>
+            <dd>@Model.CargoSize</dd>
             <dt>Attributes:</dt>
-            <dd>@Model.Field(p => p.Ability)</dd>
+            <dd>@Model.Attributes</dd>
         </dl>
     </div>
     <div class="col-md-4">
         <h4 class="text-center  headline-box">PRODUCTION</h4> 
         <dl class="dl-horizontal">
             <dt>Producer:</dt>
-            <dd>@Model.Field(p => p.Producer)</dd>
+            <dd>@Model.Producer</dd>
             <dt>Requires:</dt>
-            <dd>@Model.Field(p => p.Requires)</dd>
+            <dd>@Model.Requires</dd>
             <dt>Cost:</dt>
-            <dd>@Model.Field(p => p.CostMineral) Minerals</dd>
-            <dd>@Model.Field(p => p.CostGas) Gas</dd>
+            <dd>@Model.CostMineral Minerals</dd>
+            <dd>@Model.CostGas Gas</dd>
             <dt>Supply:</dt>
-            <dd>@Model.Field(p => p.Supply)</dd>
+            <dd>@Model.Supply</dd>
             <dt>Build time:</dt>
-            <dd>@Model.Field(p => p.BuildTime)</dd>
+            <dd>@Model.BuildTime</dd>
         </dl>
     </div>
     <div class="col-md-4">
         <h4 class="text-center headline-box">COMBAT</h4>
         <dl class="dl-horizontal">
             <dt>Upgrades:</dt>
-            <dd>@Model.Upgrades</dd>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Upgrades)</dd>
             <dt>Weapon:</dt>
-            <dd>@Model.Weapon</dd>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Weapon)</dd>
             <dt>Ability:</dt>
-            <dd>@Model.Ability</dd>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Ability)</dd>
         </dl>
     </div>
 </div>
