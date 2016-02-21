@@ -1,0 +1,62 @@
+﻿@model Pentia.ViewRenderings.Models.GameUnit
+@using Pentia.ViewRenderings
+@using Sitecore.Mvc
+
+<h1 class="headline">RenderingView Custom Model</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Zealot</div>
+            <div class="panel-body">
+                @Html.Sitecore().Field(Constants.Fields.Unit.Description)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-md-4">
+        <h4 class="text-center headline-box">BASIC INFORMATION</h4>
+        <dl class="dl-horizontal">
+            <dt>Race:</dt>
+            <dd>@Model.Race</dd>
+            <dt>Life:</dt>
+            <dd>@Model.Life</dd>
+            <dt>Shield:</dt>
+            <dd>@Model.Shield</dd>
+            <dt>Armor:</dt>
+            <dd>@Model.Armor</dd>
+            <dt>Cargo Size:</dt>
+            <dd>@Model.CargoSize</dd>
+            <dt>Attributes:</dt>
+            <dd>@Model.Attributes</dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <h4 class="text-center  headline-box">PRODUCTION</h4> 
+        <dl class="dl-horizontal">
+            <dt>Producer:</dt>
+            <dd>@Model.Producer</dd>
+            <dt>Requires:</dt>
+            <dd>@Model.Requires</dd>
+            <dt>Cost:</dt>
+            <dd>@Model.CostMineral Minerals</dd>
+            <dd>@Model.CostGas Gas</dd>
+            <dt>Supply:</dt>
+            <dd>@Model.Supply</dd>
+            <dt>Build time:</dt>
+            <dd>@Model.BuildTime</dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <h4 class="text-center headline-box">COMBAT</h4>
+        <dl class="dl-horizontal">
+            <dt>Upgrades:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Upgrades)</dd>
+            <dt>Weapon:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Weapon)</dd>
+            <dt>Ability:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Ability)</dd>
+        </dl>
+    </div>
+</div>

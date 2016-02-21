@@ -1,0 +1,62 @@
+﻿@using Pentia.ViewRenderings
+@using Sitecore.Data
+@using Sitecore.Mvc
+@model Sitecore.Mvc.Presentation.RenderingModel
+<h1 class="headline">Simple RenderingView</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Stalker</div>
+            <div class="panel-body">
+                @Model.Item.Fields[new ID(Constants.Fields.Unit.Description)].Value
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-md-4">
+        <h4 class="text-center headline-box">BASIC INFORMATION</h4>
+        <dl class="dl-horizontal">
+            <dt>Race:</dt>
+            <dd>@Model.Item.Fields[new ID(Constants.Fields.Unit.Race)].Value</dd>
+            <dt>Life:</dt>
+            <dd>@Model.Item.Fields[new ID(Constants.Fields.Unit.Life)].Value</dd>
+            <dt>Shield:</dt>
+            <dd>@Model.Item.Fields[new ID(Constants.Fields.Unit.Shield)].Value</dd>
+            <dt>Armor:</dt>
+            <dd>@Model.Item.Fields[new ID(Constants.Fields.Unit.Armor)].Value</dd>
+            <dt>Cargo Size:</dt>
+            <dd>@Model.Item.Fields[new ID(Constants.Fields.Unit.CargoSize)].Value</dd>
+            <dt>Attributes:</dt>
+            <dd>@Model.Item.Fields[new ID(Constants.Fields.Unit.Attributes)].Value</dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <h4 class="text-center  headline-box">PRODUCTION</h4> 
+        <dl class="dl-horizontal">
+            <dt>Producer:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Producer)</dd>
+            <dt>Requires:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Requires)</dd>
+            <dt>Cost:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.CostMinirel) Minerals</dd>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.CostGas) Gas</dd>
+            <dt>Supply:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Supply)</dd>
+            <dt>Build time:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.BuildTime)</dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <h4 class="text-center headline-box">COMBAT</h4>
+        <dl class="dl-horizontal">
+            <dt>Upgrades:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Upgrades) </dd>
+            <dt>Weapon:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Weapon)</dd>
+            <dt>Ability:</dt>
+            <dd>@Html.Sitecore().Field(Constants.Fields.Unit.Ability)</dd>
+        </dl>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model Pentia.ViewRenderings.ViewModels.GameUnitViewModel
+
+<h1 class="headline">RenderingView Custom Model</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Immortal</div>
+            <div class="panel-body">
+                @Model.Field(p => p.Description)
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-md-4">
+        <h4 class="text-center headline-box">BASIC INFORMATION</h4>
+        <dl class="dl-horizontal">
+            <dt>Race:</dt>
+            <dd>@Model.Field(p => p.Race)</dd>
+            <dt>Life:</dt>
+            <dd>@Model.Field(p => p.Life)</dd>
+            <dt>Shield:</dt>
+            <dd>@Model.Field(p => p.Shield)</dd>
+            <dt>Armor:</dt>
+            <dd>@Model.Field(p => p.Armor)</dd>
+            <dt>Cargo Size:</dt>
+            <dd>@Model.Field(p => p.CargoSize)</dd>
+            <dt>Attributes:</dt>
+            <dd>@Model.Field(p => p.Ability)</dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <h4 class="text-center  headline-box">PRODUCTION</h4> 
+        <dl class="dl-horizontal">
+            <dt>Producer:</dt>
+            <dd>@Model.Field(p => p.Producer)</dd>
+            <dt>Requires:</dt>
+            <dd>@Model.Field(p => p.Requires)</dd>
+            <dt>Cost:</dt>
+            <dd>@Model.Field(p => p.CostMineral) Minerals</dd>
+            <dd>@Model.Field(p => p.CostGas) Gas</dd>
+            <dt>Supply:</dt>
+            <dd>@Model.Field(p => p.Supply)</dd>
+            <dt>Build time:</dt>
+            <dd>@Model.Field(p => p.BuildTime)</dd>
+        </dl>
+    </div>
+    <div class="col-md-4">
+        <h4 class="text-center headline-box">COMBAT</h4>
+        <dl class="dl-horizontal">
+            <dt>Upgrades:</dt>
+            <dd>@Model.Upgrades</dd>
+            <dt>Weapon:</dt>
+            <dd>@Model.Weapon</dd>
+            <dt>Ability:</dt>
+            <dd>@Model.Ability</dd>
+        </dl>
+    </div>
+</div>
